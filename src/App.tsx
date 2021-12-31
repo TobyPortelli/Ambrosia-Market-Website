@@ -1,22 +1,20 @@
 import * as React from "react";
-import "./assets/scss/App.scss";
-import { BrowserRouter, Routes } from "react-router-dom";
-import { home, catalog, players, trends, toRoute } from "./routes";
+import "./components/App.scss";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { AllRoutes, RouteInfo } from "./routes";
 
 function App() {
-
-  // let reactElement = <Route path={home.location} element={<homePage />} />;
-  // console.log(reactElement);
   return (
     <BrowserRouter>
       <Routes>
-        {toRoute(home)}
-        {toRoute(catalog)}
-        {toRoute(players)}
-        {toRoute(trends)}
+        {toRoute(AllRoutes.HomeRoute)}
       </Routes>
     </BrowserRouter>
   );
+}
+
+function toRoute(route: RouteInfo): React.ReactFragment {
+  return <Route path={route.location} element={route.thing.pageComponent()} />;
 }
 
 export default App;

@@ -1,46 +1,25 @@
 import * as React from "react";
-import HomePage from "./components/home/HomePage";
-import AItemsPage from "./components/catalog/Catalog";
-import PlayersPage from "./components/player/Player";
-import TrendsPage from "./components/trends/TrendsPage";
-import { Route } from "react-router-dom";
+import Home from "./components/home/HomePage";
 
-import "./assets/scss/App.scss";
-import { ReactComponentElement, ReactElement } from "react";
+import "./components/App.scss";
+import { PageWrapper } from "./components/PageWrapper";
 
 
-export interface pageInfo {
-  component(): JSX.Element;
-
-  getImage(): HTMLImageElement;
-
-  getTitle(): string;
-
-  getDescription(): string;
-}
-
-export interface routeInfo {
+export interface RouteInfo {
   location: string,
-  thing: pageInfo
+  thing: PageWrapper
 }
 
-export function toRoute(route: routeInfo): React.ReactFragment {
-  return <Route path={route.location} element={route.thing.component()} />;
-}
 
-export const home: routeInfo = {
-  location: "/",
-  thing: HomePage
+export const AllRoutes = {
+  HomeRoute: {
+    location: "/",
+    thing: Home
+  } as RouteInfo
 };
-export const catalog: routeInfo = {
-  location: "/catalog",
-  thing: AItemsPage
+export const AllPages = {
+  HomePage: Home
 };
-export const trends: routeInfo = {
-  location: "/trend",
-  thing: TrendsPage
-};
-export const players: routeInfo = {
-  location: "/player",
-  thing: PlayersPage
-};
+
+export const AllPagesMap: Map<string, PageWrapper> = new Map<string, PageWrapper>();
+AllPagesMap.set(Home.name, Home);

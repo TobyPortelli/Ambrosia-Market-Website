@@ -1,36 +1,22 @@
-import * as ReactDom from "react-dom";
-import * as React from "react";
-import Header from "../header/Header";
-import "../../assets/scss/App.scss";
-import { home, pageInfo } from "../../routes";
-import { ImgHome } from "../ImageHandling";
+import { PageWrapper } from "../PageWrapper";
+import "../PageWrapperSS.scss";
+import "../MainPageSS.scss";
 
-class HomePageWrapper implements pageInfo {
-  getDescription(): string {
-    return "Home page plz";
-  };
+class HomePage extends PageWrapper {
+  name: string = "Home";
 
-  getImage(): HTMLImageElement {
+  public createMainPage() {
     return (
-      ImgHome
-    );
-  };
-
-  getTitle(): string {
-    return "Home";
-  };
-
-  component = function render(): JSX.Element {
-    return (
-      <>
-        {Header.getNavHeader(home)}
-        <div>
-          <h1>hi</h1>
-          <h2>how is you?</h2>
+      <div className={"main_page_root"}>
+        <div className={"main_page_top"}>
+          <h1>Heyo</h1>
         </div>
-      </>
+        <div className={"main_page_bottom"}>
+          <h2>Nope</h2>
+        </div>
+      </div>
     );
-  };
+  }
 }
 
-export default new HomePageWrapper();
+export default new HomePage();

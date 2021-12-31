@@ -1,0 +1,9 @@
+@use "sass:math";
+@import "App";
+
+.main_page_container {
+  width: math.div(1vw, 3);
+  height: 100vw;
+  background-color: $bg-color0;
+}
+

@@ -1,5 +1,5 @@
 @use "sass:math";
-@import "App";
+@import "../components/App";
 
 @function padding_inside($whole, $padding) {
   @return calc(#{$whole} - #{$padding * 2})
