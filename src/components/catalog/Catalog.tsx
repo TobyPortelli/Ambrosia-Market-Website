@@ -1,18 +1,18 @@
 import * as React from "react";
 import "../../assets/scss/AItems.scss";
 import Header from "../header/Header";
+import { catalog, pageInfo } from "../../routes";
+import { ImgCatalog } from "../ImageHandling";
 
-interface IProps {
-}
 
-class AItems extends React.Component<IProps> {
+class Catalog implements pageInfo {
   private static getSearchBar() {
     return (<>
       <div className={"aitems_search_bar_segment"}>
         <div className={"aitems_search_bar_container"}>
-          {AItems.getSearchBarLine()}
-          {AItems.getSearchBarLine()}
-          {AItems.getSearchBarLine()}
+          {Catalog.getSearchBarLine()}
+          {Catalog.getSearchBarLine()}
+          {Catalog.getSearchBarLine()}
         </div>
       </div>
     </>);
@@ -26,7 +26,7 @@ class AItems extends React.Component<IProps> {
             <div className={"aitems_search_bar_block_100"}>
             <span className={"text_normal"}>
                 <span>
-                  {AItems.getSearchBox()}
+                  {Catalog.getSearchBox()}
                 </span>
             </span>
             </div>
@@ -52,16 +52,28 @@ class AItems extends React.Component<IProps> {
 
       </>
     );
-  }
+  };
 
-  render() {
+  getImage(): HTMLImageElement {
+    return ImgCatalog;
+  };
+
+  getTitle(): string {
+    return "Catalog";
+  };
+
+  getDescription(): string {
+    return "Analyze item statistics";
+  };
+
+  component(): JSX.Element {
     return (
       <>
-        {Header.getNavHeader()}
-        {AItems.getSearchBar()}
+        {Header.getNavHeader(catalog)}
+        {Catalog.getSearchBar()}
       </>
     );
-  }
+  };
 }
 
-export default AItems;
+export default new Catalog();

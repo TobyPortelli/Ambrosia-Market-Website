@@ -1,12 +1,7 @@
 import * as React from "react";
 import "./assets/scss/App.scss";
-import "./sbc/index";
 import { BrowserRouter, Routes } from "react-router-dom";
-import { home, aitems, item_database, toRoute } from "./routes";
-
-interface IState {
-  apple: boolean;
-}
+import { home, catalog, players, trends, toRoute } from "./routes";
 
 function App() {
 
@@ -15,9 +10,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {toRoute(item_database)}
         {toRoute(home)}
-        {toRoute(aitems)}
+        {toRoute(catalog)}
+        {toRoute(players)}
+        {toRoute(trends)}
       </Routes>
     </BrowserRouter>
   );

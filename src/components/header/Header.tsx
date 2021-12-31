@@ -1,70 +1,48 @@
-import img_bot_src from "../../../public/img/Bot.png";
-
 import "../../assets/scss/Header.scss";
 import "../../assets/scss/App.scss";
+import { home, catalog, players, trends, routeInfo } from "../../routes";
 
 export default class Header {
-  static getNavHeader() {
-    let img = <img src={img_bot_src} alt="ItemDatabase" />;
-    return <header>
-      <div className="navigation_bar_container_top_top">
-        <div className="navigation_bar_top_top">
+  static getNavHeader(title: routeInfo) {
+    return <>
+      <header>
+        <div className="navigation_bar_container_top_top">
+          <div className="navigation_bar_top_top">
           <span className="text_normal">
-            <p className="title_bar">Title here plz</p>
+            <p className="title_bar">{title.thing.getTitle()}</p>
           </span>
+          </div>
         </div>
-      </div>
-      <div className="navigation_bar_container">
-        <div className="navigation_bar_container_top">
-          {this.getNavIcon(
-            img,
-            <>Item Database</>,
-            <>Wynncraft's item database</>,
-            "../item"
-          )}
-          {this.getNavIcon(
-            img,
-            <>Players</>,
-            <>Player's Inventory</>,
-            "../player"
-          )}
-          {this.getNavIcon(
-            img,
-            <>Item Stats</>,
-            <>Aggregated Item Stats</>,
-            "../aitems"
-          )}
-          {this.getNavIcon(
-            img,
-            <>Owned Items</>,
-            <>Particular item histories</>,
-            "../owned"
-          )}
-        </div>
-        <div className="navigation_bar_container_middle">
+        <div className="navigation_bar_container">
+          <div className="navigation_bar_container_top">
+            {this.getNavIcon(home)}
+            {this.getNavIcon(catalog)}
+            {this.getNavIcon(players)}
+            {this.getNavIcon(trends)}
+          </div>
+          <div className="navigation_bar_container_middle">
 
+          </div>
         </div>
-        {/*<div className="navigation_bar_container_bottom">*/}
-        {/*</div>*/}
-      </div>
-    </header>
-      ;
+      </header>
+    </>;
   }
 
-  private static getNavIcon(img: JSX.Element, title: JSX.Element, desc: JSX.Element, a_link: string) {
+  private static getNavIcon(info: routeInfo) {
+    console.log(info.thing);
     return <div className="nav_icon_container">
-      <a href={a_link}>
+      <a href={info.location}>
         <div className="nav_icon_block">
           <div className="nav_icon">
-            {img}
+            {info.thing.getImage()}
           </div>
           <span className="text_normal">
             <div className="nav_text">
               <div className="nav_text_title">
-                {title}
+                {info.thing.getTitle()}
               </div>
               <div className="nav_text_desc">
-                {desc}
+                {info.thing.getDescription()}
               </div>
             </div>
           </span>
