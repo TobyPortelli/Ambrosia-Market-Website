@@ -1,0 +1,51 @@
+$bg-color0: #e3dac9;
+$bg-color1: #276B3C;
+$bg-color2: #3EAB60;
+$bg-color3: #4BD176;
+
+$fg-color1: #e3dac9;
+$fg-color2: #595959;
+$fg-color3: #262626;
+$title_color: #6be2ba;
+
+$accent-color1: #55EB85;
+$accent-color2: #59F78B;
+$accent-color3: #55EB85;
+
+$text-color: #252525;
+$text-color-light: #424242;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+root {
+  height: 100vh;
+  width: 100vw;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: $bg-color1;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+.fill_content {
+  width: 100%;
+  height: 100%;
+}
+
+.text_normal {
+  color: $text-color;
+}
+
+.text_light {
+  color: $text-color-light;
+}

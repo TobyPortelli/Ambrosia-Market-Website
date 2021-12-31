@@ -1,0 +1,114 @@
+@use "sass:math";
+@import "App";
+
+@function padding_inside($whole, $padding) {
+  @return calc(#{$whole} - #{$padding * 2})
+}
+
+@function padding_inside_depth($whole, $padding, $times) {
+  @return calc(#{$whole} - #{$padding * 2 * $times})
+}
+
+@function padding_outside($whole, $padding) {
+  @return calc(#{$whole} + #{$padding * 2})
+}
+
+$search_bar_height: 300px;
+$search_bar_padding: 200px;
+$search_bar_line_padding: 10px;
+
+.aitems_search_bar_segment {
+  $padding: 100px;
+  display: inline-block;
+  width: padding_inside(100%, $padding);
+  height: padding_outside($search_bar_height, $search_bar_padding);
+  padding: $padding;
+}
+
+.aitems_search_bar_container {
+  $num_of_lines: 3;
+  $padding: 5px;
+  display: inline-block;
+  width: 100%;
+  height: $search_bar_height + #{$padding * 2 * $num_of_lines};
+
+  .aitems_search_bar_line {
+    $search_line_height: math.div($search_bar_height, $num_of_lines);
+    display: inline-block;
+    width: calc(100% - #{$padding * 4});
+    vertical-align: top;
+    padding: $search_bar_line_padding;
+    height: calc(#{$search_bar_height} / #{$num_of_lines} - #{$padding * 2});
+    background-color: $fg-color3;
+
+    .aitems_search_bar_block_100_container {
+      display: inline-block;
+      width: padding_inside(100%, $padding);
+      height: padding_inside(100%, $padding);
+      padding: $padding;
+      background-color: $fg-color2;
+    }
+
+    .aitems_search_bar_block_100 {
+      display: inline-block;
+      padding: $padding;
+      width: padding_inside(100%, $padding);
+      height: padding_inside(100%, $padding);
+      background-color: $fg-color1;
+    }
+  }
+}
+
+.search_box {
+  $padding: 4px;
+  $button_size: 100px;
+  display: inline-block;
+  width: padding_inside(100%, $padding);
+  height: padding_inside(100%, $padding);
+  padding: $padding;
+  vertical-align: top;
+
+  .search_box_text {
+    display: inline-block;
+    vertical-align: top;
+    padding: $padding;
+    width: calc(100% - #{$button_size} - #{$padding * 5});
+    height: padding_inside(100%, $padding);
+    background-color: $fg-color2;
+  }
+
+  .search_box_search {
+    display: inline-block;
+    background-color: $fg-color2;
+    color: $fg-color1;
+    box-shadow: none;
+  }
+
+  .search_box_button_container {
+    display: inline-block;
+    vertical-align: top;
+    padding: $padding $padding $padding $padding * 2;
+    width: padding_inside($button_size, $padding);
+    height: padding_inside(100%, $padding);
+    background-color: $fg-color2;
+
+    .search_box_button {
+      margin-top: $padding;
+      horiz-align: center;
+      display: inline-block;
+      width: padding_inside_depth($button_size, $padding, 2);
+      height: padding_inside(100%, $padding);
+      background-color: $fg-color1;
+      color: $text-color;
+    }
+  }
+
+
+  .aitems_search_bar_search {
+    display: inline-block;
+    width: padding_inside(100%, $padding);
+    height: padding_inside_depth(100%, $padding, 1.5);
+    padding: $padding;
+    background-color: $fg-color1;
+  }
+}

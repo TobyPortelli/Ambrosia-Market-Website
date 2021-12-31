@@ -1,0 +1,96 @@
+@import "App";
+
+$icon-height: 80px;
+$icon-padding: 8px;
+
+.title_bar {
+  height: 100%;
+  width: 100%;
+  font-size: x-large;
+  display: inline-grid;
+  text-align: center;
+  vertical-align: text-bottom;
+}
+
+.navigation_bar_container {
+  height: 180px;
+  width: 100vw;
+  background-color: $bg-color3;
+  display: inline-block;
+}
+
+.nav_icon_block {
+  height: $icon-height;
+  width: 100%;
+  vertical-align: bottom;
+}
+
+.nav_icon {
+  display: inline-block;
+  vertical-align: center;
+  width: $icon-height;
+  height: $icon-height;
+}
+
+.nav_text {
+  display: inline-block;
+  vertical-align: top;
+  max-width: 75%;
+  height: 100%;
+}
+
+
+.nav_text_title {
+  font-size: xx-large;
+  vertical-align: top;
+  padding: 5px;
+  width: 100%;
+}
+
+.nav_text_desc {
+  font-size: large;
+  vertical-align: top;
+  padding: 5px;
+  width: 100%;
+}
+
+.navigation_bar_container_top_top {
+  height: 30px;
+  width: 100vw;
+  padding: 0;
+  background-color: $bg-color3;
+  display: block;
+}
+
+.navigation_bar_top_top {
+  horiz-align: left;
+  vertical-align: top;
+  width: 85vw;
+  height: 100%;
+}
+
+.navigation_bar_container_top {
+  padding: $icon-padding;
+  height: $icon-height+$icon-padding;
+  background-color: $bg-color2;
+}
+
+.nav_icon_container {
+  display: inline-block;
+  width: 25%;
+  height: 100%;
+  vertical-align: bottom;
+}
+
+.navigation_bar_container_middle {
+  height: 25%;
+  width: 100vw;
+  display: inline-block;
+  background-color: $bg-color2;
+}
+
+.navigation_bar_container_bottom {
+  height: 25%;
+  width: 100vw;
+  display: inline-block;
+}
