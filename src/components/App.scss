@@ -14,6 +14,27 @@ $border-color0: #1b630d;
 $text-color: #43bb28;
 $text-color-light: #1b630d;
 
+$temp0: $bg-color0;
+@function padding_inside($whole, $padding) {
+  @return calc(#{$whole} - #{$padding * 2})
+}
+
+@function padding_inside_each($whole, $paddings) {
+  $pad: 0;
+  @each $padding in $paddings {
+    $pad: $pad + $padding;
+  }
+  @return calc(#{$whole} - #{$pad * 2})
+}
+
+@function padding_inside_depth($whole, $padding, $times) {
+  @return calc(#{$whole} - #{$padding * 2 * $times})
+}
+
+@function padding_outside($whole, $padding) {
+  @return calc(#{$whole} + #{$padding * 2})
+}
+
 * {
   margin: 0;
   padding: 0;

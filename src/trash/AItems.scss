@@ -1,18 +1,6 @@
 @use "sass:math";
 @import "../components/App";
 
-@function padding_inside($whole, $padding) {
-  @return calc(#{$whole} - #{$padding * 2})
-}
-
-@function padding_inside_depth($whole, $padding, $times) {
-  @return calc(#{$whole} - #{$padding * 2 * $times})
-}
-
-@function padding_outside($whole, $padding) {
-  @return calc(#{$whole} + #{$padding * 2})
-}
-
 $search_bar_height: 300px;
 $search_bar_padding: 200px;
 $search_bar_line_padding: 10px;

@@ -1,0 +1,72 @@
+@use "sass:math";
+@import "../App";
+
+.side_page_container {
+  $num_of_rows: 11;
+  $row_height: calc(100% / #{$num_of_rows});
+  width: math.div(100vw, 3);
+  height: 100vh;
+  background-color: $bg-color1;
+  vertical-align: top;
+  display: inline-block;
+
+  .side_panel_root_container {
+    $root_con_padding: 50px;
+    $root_con_padding_w: 25px;
+    $root_con_border: 7px;
+    border: solid $border-color0 $root_con_border;
+    width: padding_inside_each(100%, [$root_con_padding,$root_con_border]);
+    height: padding_inside_each(100%, [$root_con_padding,$root_con_border]);
+    padding: $root_con_padding $root_con_padding_w;
+
+    .side_panel_root {
+      background-color: $bg-color1;
+      height: 100%;
+      width: 100%;
+
+      .side_panel_row_container {
+        $icon_size: 50px;
+        $row_padding: 8px;
+        $padding: 5px;
+        width: padding_inside(100%, $row_padding);
+        height: padding_inside($row_height, $row_padding);
+        horiz-align: left;
+        display: inline-block;
+        padding: $row_padding;
+        background-color: $bg-color2;
+
+        .side_panel_row_icon_container {
+          display: inline-block;
+          width: $icon_size + $padding*2;
+          height: 100%;
+          padding: $padding;
+
+          .side_panel_row_icon {
+            display: block;
+            vertical-align: center;
+            margin: auto;
+            width: $icon_size;
+            height: $icon_size;
+          }
+        }
+
+        .side_panel_row_content_container {
+          display: inline-block;
+          vertical-align: top;
+          width: calc(100% - #{$icon_size} - #{$padding} * 2 - #{$row_padding} * 2);
+          height: 100%;
+
+          .side_panel_row_content {
+            color: $text-color;
+            font-size: x-large;
+            font-weight: bold;
+            display: block;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+
