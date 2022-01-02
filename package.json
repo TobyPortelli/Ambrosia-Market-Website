@@ -6,7 +6,7 @@
     "build": "npm run clean-dist && webpack --config=configs/webpack/prod.js",
     "clean-dist": "rimraf dist/*",
     "lint": "eslint './src/**/*.{js,ts,tsx}' --quiet",
-    "start": "webpack-dev-server --config=configs/webpack/dev.js",
+    "start": "webpack-dev-server --config=configs/webpack/dev.js --https",
     "start-prod": "npm run build && node express.js",
     "test": "jest --coverage --watchAll --config=configs/jest.json"
   },
@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "css-loader": "^6.5.1",
+    "express": "^4.17.2",
     "file-loader": "^6.2.0",
     "image-webpack-loader": "^8.0.1",
     "JSX": "^1.1.0",

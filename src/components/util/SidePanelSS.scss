@@ -33,7 +33,73 @@
         horiz-align: left;
         display: inline-block;
         padding: $row_padding;
-        background-color: $bg-color2;
+
+        .login_row_container {
+          display: inline-block;
+          vertical-align: top;
+          height: 100%;
+          width: 100%;
+
+          .login_row {
+            $button_border: 5px;
+            $row_border: 8px;
+            display: inline-block;
+            vertical-align: top;
+            height: padding_inside(100%, $row_border);
+            width: padding_inside(100%, $row_border);
+            padding: $row_border;
+
+            .login_btn_container {
+              display: inline-block;
+              height: padding_inside(100%, $button_border);
+              width: padding_inside(45%, $button_border);
+              background-color: $bg-color0;
+              padding: $button_border;
+              margin-right: auto;
+              margin-left: 0;
+
+              .login_btn {
+                height: 100%;
+                width: 100%;
+                background-color: $bg-color1;
+                color: $bg-color0;
+                text-align: center;
+
+                text {
+                  vertical-align: center;
+                  font-size: larger;
+                  font-weight: bold;
+                }
+              }
+            }
+
+            .signup_btn_container {
+              height: padding_inside(100%, $button_border);
+              width: padding_inside(45%, $button_border);
+              margin-right: 0;
+              margin-left: auto;
+              horiz-align: right;
+              float: right;
+              background-color: $bg-color0;
+              padding: $button_border;
+              display: inline-block;
+
+              .signup_btn {
+                height: 100%;
+                width: 100%;
+                background-color: $bg-color0;
+                color: $bg-color1;
+                text-align: center;
+
+                text {
+                  vertical-align: center;
+                  font-size: larger;
+                  font-weight: bold;
+                }
+              }
+            }
+          }
+        }
 
         .side_panel_row_icon_container {
           display: inline-block;
@@ -58,10 +124,10 @@
 
           .side_panel_row_content {
             color: $text-color;
-            font-size: x-large;
+            font-size: 1.5em;
             font-weight: bold;
             display: block;
-            text-align: center;
+            text-align: left;
           }
         }
       }
