@@ -31,7 +31,7 @@
         width: padding_inside(100%, $row_padding);
         height: padding_inside($row_height, $row_padding);
         horiz-align: left;
-        display: inline-block;
+        display: flex;
         padding: $row_padding;
 
         .login_row_container {

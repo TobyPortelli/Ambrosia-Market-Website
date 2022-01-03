@@ -1,22 +1,24 @@
 import "./PageWrapperSS.scss";
 import SidePanel from "./util/SidePanel";
 import UserProfile from "../user/UserProfile";
-import { AllPages } from "../routes";
-import HomePage from "./home/HomePage";
 import "./PageWrapperSS.scss";
+import * as React from "react";
 
-export abstract class PageWrapper {
-  abstract name: string;
+export interface PageProps {
+  name: string;
+}
 
-  public onOpenPage(): void {
-  };
+export abstract class PageWrapper extends React.Component<PageProps> {
+  constructor(props: PageProps) {
+    super(props);
+  }
 
-  public pageComponent(): JSX.Element {
+  render() {
     this.onOpenPage_();
     return (
       <>
         <div className={"side_page_container"}>
-          {this.createSidePanel()}
+          <SidePanel />
         </div>
         <div className={"main_page_container"}>
           {this.createMainPage()}
@@ -27,15 +29,9 @@ export abstract class PageWrapper {
 
   public abstract createMainPage(): JSX.Element ;
 
-  public createSidePanel() {
-    return SidePanel.createSidePanel();
-  }
 
   private onOpenPage_(): void {
-    let isPageChange = UserProfile.setCurrentPage(HomePage.name);
-    if (isPageChange) {
-      this.onOpenPage();
-    }
+    UserProfile.setCurrentPage(this);
   }
 }
 

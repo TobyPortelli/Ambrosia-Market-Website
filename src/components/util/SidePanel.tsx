@@ -1,7 +1,13 @@
 import "./SidePanelSS.scss";
 import { AmbrosiaMarketIcon } from "../ImageHandling";
+import * as React from "react";
 
-class rowInfo {
+interface IconContent {
+  icon: JSX.Element,
+  content: JSX.Element
+}
+
+class RowInfo {
   icon: JSX.Element;
   text: string;
   className: string;
@@ -12,81 +18,90 @@ class rowInfo {
     this.className = className;
   }
 
-  createIcon(): JSX.Element {
-    return this.icon;
-  };
 }
 
-class SidePanel {
-  static createSidePanel(): JSX.Element {
-    let titleRowInfo = new rowInfo(AmbrosiaMarketIcon, "Ambrosia Market");
-    let searchFilterInfo = new rowInfo(AmbrosiaMarketIcon, "Search Filters");
-    let marketInfo = new rowInfo(AmbrosiaMarketIcon, "Market");
-    let tradeInfo = new rowInfo(AmbrosiaMarketIcon, "Trade");
-    let aboutInfo = new rowInfo(AmbrosiaMarketIcon, "About Ambrosia");
-    let discordInfo = new rowInfo(AmbrosiaMarketIcon, "Join our Discord");
-    let profileInfo = new rowInfo(AmbrosiaMarketIcon, "Your Profile");
-    let titleRow = this.createSimpleRow(titleRowInfo);
-    let loginRow = SidePanel.createLoginRow();
-    let searchRow = SidePanel.createLoginRow();
-    let searchFilter = this.createSimpleRow(searchFilterInfo);
-    let market = this.createSimpleRow(marketInfo);
-    let trade = this.createSimpleRow(tradeInfo);
-    let about = this.createSimpleRow(aboutInfo);
-    let discord = this.createSimpleRow(discordInfo);
-    let profile = this.createSimpleRow(profileInfo);
+class SidePanel extends React.Component {
+  render() {
+    let titleRow = <SidePanelSimpleRow {...(new RowInfo(AmbrosiaMarketIcon, "Ambrosia Market"))} />;
+    let loginRow = <SidePanelLoginRow />;
+    let searchRow = <SidePanelLoginRow />;
+    let searchFilter = <SidePanelSimpleRow {...(new RowInfo(AmbrosiaMarketIcon, "Search Filters"))} />;
+    let market = <SidePanelSimpleRow {...(new RowInfo(AmbrosiaMarketIcon, "Market"))} />;
+    let trade = <SidePanelSimpleRow {...(new RowInfo(AmbrosiaMarketIcon, "Trade"))} />;
+    let about = <SidePanelSimpleRow {...(new RowInfo(AmbrosiaMarketIcon, "About Ambrosia"))} />;
+    let discord = <SidePanelSimpleRow {...(new RowInfo(AmbrosiaMarketIcon, "Join our Discord"))} />;
+    let profile = <SidePanelSimpleRow {...(new RowInfo(AmbrosiaMarketIcon, "Your Profile"))} />;
     return <>
       <div className={"side_panel_root_container"}>
         <div className={"side_panel_root"}>
-          {SidePanel.createRow(titleRow)}
-          {SidePanel.createRow(loginRow)}
-          {SidePanel.createRow(searchRow)}
-          {SidePanel.createRow(searchFilter)}
-          {SidePanel.createRow(market)}
-          {SidePanel.createRow(trade)}
-          {SidePanel.createRow(about)}
-          {SidePanel.createRow(discord)}
-          {SidePanel.createRow(profile)}
+          <SidePanelRow {...titleRow} />
+          <SidePanelRow {...loginRow} />
+          <SidePanelRow {...searchRow} />
+          <SidePanelRow {...searchFilter} />
+          <SidePanelRow {...market} />
+          <SidePanelRow {...trade} />
+          <SidePanelRow {...about} />
+          <SidePanelRow {...discord} />
+          <SidePanelRow {...profile} />
         </div>
       </div>
     </>;
   }
+}
 
-  private static createSimpleRow(rowInfoStuff: rowInfo) {
-    return SidePanel.createIconRow(
-      rowInfoStuff.createIcon(),
-      <>
-        <text className={rowInfoStuff.className}>
-          {rowInfoStuff.text}
-        </text>
-      </>
-    );
+class SidePanelSimpleRow extends React.Component<RowInfo> {
+  constructor(props: RowInfo) {
+    super(props);
   }
 
-  private static createRow(inner: JSX.Element): JSX.Element {
+  render() {
+    let content = <>
+      <text className={this.props.className}>
+        {this.props.text}
+      </text>
+    </>;
+    return <SidePanelIconRow icon={this.props.icon} content={content} />;
+  }
+}
+
+class SidePanelRow extends React.Component<JSX.Element> {
+  constructor(props: JSX.Element) {
+    super(props);
+  }
+
+  render() {
     return <>
       <div className={"side_panel_row_container"}>
-        {inner}
+        {this.props}
       </div>
     </>;
   }
+}
 
-  private static createIconRow(icon: JSX.Element, content: JSX.Element) {
+
+class SidePanelIconRow extends React.Component<IconContent> {
+  constructor(props: IconContent) {
+    super(props);
+  }
+
+  render() {
     return <>
       <div className={"side_panel_row_icon_container"}>
         <div className={"side_panel_row_icon"}>
-          {icon}
+          {this.props.icon}
         </div>
       </div>
       <div className={"side_panel_row_content_container"}>
         <div className={"side_panel_row_content"}>
-          {content}
+          {this.props.content}
         </div>
       </div>
     </>;
   }
+}
 
-  private static createLoginRow() {
+class SidePanelLoginRow extends React.Component {
+  render() {
     return <>
       <div className={"login_row_container"}>
         <div className={"login_row"}>

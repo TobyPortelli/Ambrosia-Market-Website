@@ -8,8 +8,8 @@ const fs = require("fs");
 app.use(express.static(sourceDir));
 
 server = https.createServer({
-  key: fs.readFileSync("C:\\Users\\Aaron\\Desktop\\Security\\SSL\\sslpriv.pem"),
-  cert: fs.readFileSync("C:\\Users\\Aaron\\Desktop\\Security\\SSL\\sslcert.pem")
+  // key: fs.readFileSync("C:\\Users\\Aaron\\Desktop\\Security\\SSL\\sslpriv.pem"),
+  // cert: fs.readFileSync("C:\\Users\\Aaron\\Desktop\\Security\\SSL\\sslcert.pem")
 }, app);
 
 server.listen(portNumber, () => {

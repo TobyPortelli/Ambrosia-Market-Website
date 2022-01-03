@@ -1,9 +1,13 @@
-import { PageWrapper } from "../PageWrapper";
+import { PageProps, PageWrapper } from "../PageWrapper";
 import "../PageWrapperSS.scss";
 import "../MainPageSS.scss";
+import { useEffect, useMemo, useState } from "react";
+
 
 class HomePage extends PageWrapper {
-  name: string = "Home";
+  constructor(props: PageProps) {
+    super(props);
+  }
 
   public createMainPage() {
     return (
@@ -12,11 +16,30 @@ class HomePage extends PageWrapper {
           <h1>Heyo</h1>
         </div>
         <div className={"main_page_bottom"}>
-          <h2>Nope</h2>
         </div>
       </div>
     );
   }
 }
 
-export default new HomePage();
+interface ExampleProps {
+  shouldDisplay: boolean;
+  tonOfVars?: string;
+}
+
+const Example = (props: ExampleProps) => {
+  const { shouldDisplay, tonOfVars } = props;
+  useEffect(() => {
+    console.log("getting hit");
+  }, []);
+  const usehere = useMemo(() => {
+    return shouldDisplay ? "string of something" : "";
+  }, [shouldDisplay]);
+  return (
+    <>
+      <h1>{usehere}</h1>
+    </>
+  );
+};
+
+export default <HomePage name={"Home"} />;

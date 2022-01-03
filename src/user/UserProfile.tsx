@@ -1,12 +1,11 @@
-import { AllPages, AllPagesMap } from "../routes";
 import { PageWrapper } from "../components/PageWrapper";
 
 class UserProfile {
   private currentPage: PageWrapper;
 
-  setCurrentPage(pageName: string): boolean {
-    if (this.currentPage == null || pageName != this.currentPage.name) {
-      this.currentPage = AllPagesMap.get(pageName);
+  setCurrentPage(newPage: PageWrapper): boolean {
+    if (this.currentPage == null || newPage.props.name != this.currentPage.props.name) {
+      this.currentPage = newPage;
       return true;
     } else {
       return false;

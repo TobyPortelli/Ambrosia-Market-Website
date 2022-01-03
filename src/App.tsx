@@ -14,7 +14,7 @@ function App() {
 }
 
 function toRoute(route: RouteInfo): React.ReactFragment {
-  return <Route path={route.location} element={route.thing.pageComponent()} />;
+  return <Route path={route.location} element={route.thing} />;
 }
 
 export default App;
